@@ -36,5 +36,6 @@ export default defineSchema({
                 foods: v.array(v.string())
             })),
         }),
-    })
+        isActive: v.boolean(),
+    }).index("byUserId", ["userId"]).index("by_active", ["isActive"]),
 })

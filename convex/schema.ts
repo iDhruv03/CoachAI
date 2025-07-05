@@ -28,5 +28,13 @@ export default defineSchema({
                 })),
             })),
         }),
+
+        dietPlan: v.object({
+            dailyCalories: v.number(),
+            meals: v.array(v.object({
+                name: v.string(),
+                foods: v.array(v.string())
+            })),
+        }),
     })
 })

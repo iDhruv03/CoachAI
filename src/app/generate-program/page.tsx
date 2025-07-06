@@ -104,13 +104,28 @@ const GenerateProgramPage = () => {
           }
         });
       } catch (error) {
-        
+        console.log("Failed to start call", error);
+        setConnecting(false);
       }
     }
   }
 
   return (
-    <div>GenerateProgramPage</div>
+    <div className="flex flex-col min-h-screen text-foreground overflow-hidden pb-6 pt-24">
+      <div className="container mx-auto px-4 h-full max-w-5xl">
+        {/* Title */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold font-mono">
+            <span>Generate Your </span>
+            <span className="text-primary uppercase">Fitness Program</span>
+          </h1>
+          <p className="text-muted-foreground mt-2">
+            Have a voice conversation with our AI assistant to create your personalized plan
+          </p>
+        </div>
+
+      </div>
+    </div>
   )
 }
 

@@ -18,7 +18,10 @@ const GenerateProgramPage = () => {
   useEffect(() => {
 
     const handleCallStart = () => {
-      
+      console.log("Call started");
+      setConnecting(false);
+      setCallActive(true);
+      setCallEnded(false);
     }
     const handleCallEnd = () => {}
     const handleSpeechStart = () => {}

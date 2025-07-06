@@ -1,4 +1,5 @@
 "use client"
+import { Card } from "@/components/ui/card";
 import { vapi } from "@/lib/vapi";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -123,6 +124,13 @@ const GenerateProgramPage = () => {
             Have a voice conversation with our AI assistant to create your personalized plan
           </p>
         </div>
+      {/* Video Call Area */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* AI assistant card */}
+       <Card className="bg-card/90 backdrop-blur-sm border border-border overflow-hidden relative">
+        </Card> 
+
+      </div>
 
       </div>
     </div>

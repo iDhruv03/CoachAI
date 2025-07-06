@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button"
+import { ArrowRightIcon } from "lucide-react"
+import Link from "next/link"
 
 
 const HomePage = () => {
@@ -51,8 +54,38 @@ const HomePage = () => {
                 </div>
               </div>
 
-              
+
+                {/* Button */}
+        <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                <Button
+                  size="lg"
+                  asChild
+                  className="overflow-hidden bg-primary text-primary-foreground px-8 py-6 text-lg font-medium"
+                >
+                  <Link href={"/generate-program"} className="flex items-center font-mono">
+                    Build Your Program
+                    <ArrowRightIcon className="ml-2 size-5" />
+                  </Link>
+                </Button>
               </div>
+            
+          </div>
+          
+             {/*RIGHT SIDE CONTENT  */}
+          <div className="lg:col-span-5 relative">
+
+            {/* Corner Pieces */}
+            <div className="absolute -inset-4 pointer-events-none">
+                <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-border" />
+                <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-border" />
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-border" />
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-border" />
+              </div>
+          </div>
+
+
+
+
 
          </div>
       </div>

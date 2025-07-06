@@ -81,10 +81,16 @@ const HomePage = () => {
                 <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-border" />
                 <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-border" />
               </div>
+
+               {/* IMAGE CONTAINER */}
+        <div className="relative aspect-square max-w-lg mx-auto">
+          <div className="relative overflow-hidden rounded-lg bg-cyber-black">
+            <img src="/hero-ai3.png" alt="AI Fitness Coach" className="size-full object-cover object-center" />
+          </div>
+        </div>
           </div>
 
-
-
+         
 
 
          </div>

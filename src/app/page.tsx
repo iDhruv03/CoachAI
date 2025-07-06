@@ -1,3 +1,4 @@
+import TerminalOverlay from "@/components/TerminalOverlay"
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon } from "lucide-react"
 import Link from "next/link"
@@ -88,8 +89,22 @@ const HomePage = () => {
             <img src="/hero-ai3.png" alt="AI Fitness Coach" className="size-full object-cover object-center" />
             {/* SCAN LINE */}
                   <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,transparent_calc(50%-1px),var(--cyber-glow-primary)_50%,transparent_calc(50%+1px),transparent_100%)] bg-[length:100%_8px] animate-scanline pointer-events-none" />
+                  {/* Decorations on top of the image */}
+                  {/* DECORATIONS ON TOP THE IMAGE */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-1/3 left-1/3 w-1/3 h-1/3 border border-primary/40 rounded-full" />
+
+                    {/* Targeting lines */}
+                    <div className="absolute top-1/2 left-0 w-1/4 h-px bg-primary/50" />
+                    <div className="absolute top-1/2 right-0 w-1/4 h-px bg-primary/50" />
+                    <div className="absolute top-0 left-1/2 h-1/4 w-px bg-primary/50" />
+                    <div className="absolute bottom-0 left-1/2 h-1/4 w-px bg-primary/50" />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
           </div>
+           {/* TERMINAL OVERLAY */}
+                <TerminalOverlay />
         </div>
           </div>
 

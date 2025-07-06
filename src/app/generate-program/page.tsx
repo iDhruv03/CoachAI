@@ -15,6 +15,16 @@ const GenerateProgramPage = () => {
   const router = useRouter();
   const messageContainerRef = useRef<HTMLDivElement>(null);
 
+  // auto-scroll messages
+  useEffect(() => {
+    if(messageContainerRef.current) {
+      messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  // navigate user to profile page after the call ends
+
+  //setup event listeners for vapi
   useEffect(() => {
 
     const handleCallStart = () => {
@@ -38,8 +48,15 @@ const GenerateProgramPage = () => {
       console.log("AI stopped speaking");
       setIsSpeaking(false);
     }
-    const handleMessage = () => {}
-    const handleError = () => {}
+    const handleMessage = () => {
+
+    }
+    const handleError = (error:any) => {
+      console.log("vapi error", error);
+       setConnecting(false);
+       setCallActive(false);
+
+    }
 
     vapi.on("call-start", handleCallStart)
     .on("call-end", handleCallEnd)

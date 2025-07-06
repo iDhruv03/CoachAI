@@ -23,6 +23,14 @@ const GenerateProgramPage = () => {
   }, [messages]);
 
   // navigate user to profile page after the call ends
+  useEffect(() => {
+    if(callEnded){
+      const redirectTimer = setTimeout(() => {
+        router.push("/profile"); 
+      }, 1500);
+      
+    }
+  }, [callEnded]);
 
   //setup event listeners for vapi
   useEffect(() => {

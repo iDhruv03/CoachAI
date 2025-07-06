@@ -28,9 +28,10 @@ const GenerateProgramPage = () => {
       const redirectTimer = setTimeout(() => {
         router.push("/profile"); 
       }, 1500);
+      return () => clearTimeout(redirectTimer);
       
     }
-  }, [callEnded]);
+  }, [callEnded,router]);
 
   //setup event listeners for vapi
   useEffect(() => {
@@ -83,6 +84,30 @@ const GenerateProgramPage = () => {
      .off("error", handleError)
     }
   }, [])
+
+  const toggleCall = async () => {
+    if(callActive) vapi.stop();
+    else{
+      try {
+        setConnecting(true);
+        setMessages([]);
+        setCallEnded(false);
+        
+         const fullName = user?.firstName
+          ? `${user.firstName} ${user.lastName || ""}`.trim()
+          : "There";
+
+        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+          variableValues:{
+            full_name: fullName,
+            //TODO: need to send user_id as well
+          }
+        });
+      } catch (error) {
+        
+      }
+    }
+  }
 
   return (
     <div>GenerateProgramPage</div>

@@ -23,7 +23,13 @@ const GenerateProgramPage = () => {
       setCallActive(true);
       setCallEnded(false);
     }
-    const handleCallEnd = () => {}
+    const handleCallEnd = () => {
+      console.log("Call ended");
+      setCallActive(false);
+      setConnecting(false);
+      setIsSpeaking(false);
+      setCallEnded(true);
+    }
     const handleSpeechStart = () => {}
     const handleSpeechEnd = () => {}
     const handleMessage = () => {}

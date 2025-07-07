@@ -106,7 +106,7 @@ const GenerateProgramPage = () => {
         await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
           variableValues:{
             full_name: fullName,
-            //TODO: need to send user_id as well
+            user_id: user?.id,
           }
         });
       } catch (error) {
@@ -241,7 +241,7 @@ const GenerateProgramPage = () => {
               {messages.map((msg, index) => (
                 <div key={index} className="message-item animate-fadeIn">
                   <div className="font-semibold text-xs text-muted-foreground mb-1">
-                    {msg.role === "assistant" ? "CodeFlex AI" : "You"}:
+                    {msg.role === "assistant" ? "CoachAI" : "You"}:
                   </div>
                   <p className="text-foreground">{msg.content}</p>
                 </div>

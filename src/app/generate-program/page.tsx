@@ -176,6 +176,22 @@ const GenerateProgramPage = () => {
                   isSpeaking ? "border-primary" : ""
                 }`}>
 
+                  <div
+                  className={`w-2 h-2 rounded-full ${
+                    isSpeaking ? "bg-primary animate-pulse" : "bg-muted"
+                  }`}
+                />
+
+                <span className="text-xs text-muted-foreground">
+                  {isSpeaking
+                    ? "Speaking..."
+                    : callActive
+                      ? "Listening..."
+                      : callEnded
+                        ? "Redirecting to profile..."
+                        : "Waiting..."}
+                </span>
+
               </div>
 
 

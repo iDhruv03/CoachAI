@@ -1,4 +1,5 @@
 "use client"
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { vapi } from "@/lib/vapi";
 import { useUser } from "@clerk/nextjs";
@@ -224,6 +225,37 @@ const GenerateProgramPage = () => {
               </div>
             </div>
           </Card>
+
+
+          {/* Call Controls */}
+          <div className="w-full flex justify-center gap-4">
+            <Button
+            className={`w-40 text-xl rounded-3xl ${
+              callActive
+                ? "bg-destructive hover:bg-destructive/90"
+                : callEnded
+                  ? "bg-green-600 hover:bg-green-700"
+                  : "bg-primary hover:bg-primary/90"
+            } text-white relative`}
+            onClick={toggleCall}
+            disabled={connecting || callEnded}
+          >
+            {connecting && (
+              <span className="absolute inset-0 rounded-full animate-ping bg-primary/50 opacity-75"></span>
+            )}
+
+            <span>
+              {callActive
+                ? "End Call"
+                : connecting
+                  ? "Connecting..."
+                  : callEnded
+                    ? "View Profile"
+                    : "Start Call"}
+            </span>
+            </Button>
+
+          </div>
 
       </div>
 

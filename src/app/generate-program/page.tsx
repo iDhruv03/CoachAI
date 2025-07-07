@@ -10,7 +10,7 @@ const GenerateProgramPage = () => {
   const[callActive, setCallActive] = useState(false);
   const[connecting, setConnecting] = useState(false);
   const[isSpeaking, setIsSpeaking] = useState(false);
-  const[messages, setMessages] = useState([]);
+  const[messages, setMessages] = useState<any[]>([]);
   const[callEnded, setCallEnded] = useState(false);
 
   const {user} = useUser();
@@ -59,7 +59,11 @@ const GenerateProgramPage = () => {
       console.log("AI stopped speaking");
       setIsSpeaking(false);
     }
-    const handleMessage = () => {
+    const handleMessage = (message: any) => {
+      if(message.type === "transcript" && message.transcriptType ==="final"){
+        const newMessage = {content:message.transcript, role:message.role}
+        setMessages(prev => [...prev, newMessage])
+      }
 
     }
     const handleError = (error:any) => {
@@ -225,6 +229,36 @@ const GenerateProgramPage = () => {
               </div>
             </div>
           </Card>
+          </div>
+          
+            {/* Message Container */}
+          {messages.length > 0 && (
+          <div
+            ref={messageContainerRef}
+            className="w-full bg-card/90 backdrop-blur-sm border border-border rounded-xl p-4 mb-8 h-64 overflow-y-auto transition-all duration-300 scroll-smooth"
+          >
+            <div className="space-y-3">
+              {messages.map((msg, index) => (
+                <div key={index} className="message-item animate-fadeIn">
+                  <div className="font-semibold text-xs text-muted-foreground mb-1">
+                    {msg.role === "assistant" ? "CodeFlex AI" : "You"}:
+                  </div>
+                  <p className="text-foreground">{msg.content}</p>
+                </div>
+              ))}
+
+              {callEnded && (
+                <div className="message-item animate-fadeIn">
+                  <div className="font-semibold text-xs text-primary mb-1">System:</div>
+                  <p className="text-foreground">
+                    Your fitness program has been created! Redirecting to your profile...
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
 
 
           {/* Call Controls */}
@@ -255,7 +289,7 @@ const GenerateProgramPage = () => {
             </span>
             </Button>
 
-          </div>
+          
 
       </div>
 

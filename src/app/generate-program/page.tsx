@@ -151,6 +151,25 @@ const GenerateProgramPage = () => {
                   ))}
                 </div>
               </div>
+              {/* AI image */}
+                    <div className="relative size-32 mb-4">
+                    <div
+                  className={`absolute inset-0 bg-primary opacity-10 rounded-full blur-lg ${
+                    isSpeaking ? "animate-pulse" : ""
+                  }`}
+                />
+                <div className="relative w-full h-full rounded-full bg-card flex items-center justify-center border border-border overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-secondary/10"></div>
+                  <img
+                    src="/ai-avatar.png"
+                    alt="AI Assistant"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                    </div>
+
+                    <h2 className="text-xl font-bold text-foreground">CoachAI</h2>
+              <p className="text-sm text-muted-foreground mt-1">Fitness & Diet Coach</p>
 
         </div>
         </Card> 

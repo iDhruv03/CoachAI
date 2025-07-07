@@ -171,6 +171,14 @@ const GenerateProgramPage = () => {
                     <h2 className="text-xl font-bold text-foreground">CoachAI</h2>
               <p className="text-sm text-muted-foreground mt-1">Fitness & Diet Coach</p>
 
+              {/* Speaking indicator */}
+              <div className={`mt-4 flex items-center gap-2 px-3 py-1 rounded-full bg-card border border-border ${
+                  isSpeaking ? "border-primary" : ""
+                }`}>
+
+              </div>
+
+
         </div>
         </Card> 
 

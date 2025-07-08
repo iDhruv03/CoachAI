@@ -230,12 +230,43 @@ http.route({
         let dietPlan = JSON.parse(dietPlanText);
         dietPlan = validateDietPlan(dietPlan);
         console.log("Validated diet plan:", dietPlan);
-        
+        // save to our db
+        const planId = await ctx.runMutation(api.plans.createPlan, {
+          userId: user_id,
+          dietPlan,
+          isActive: true,
+          workoutPlan,
+          name: `${fitness_goal} Plan - ${new Date().toLocaleDateString()}`,
+        });
+        return new Response(
+        JSON.stringify({
+          success: true,
+          data: {
+            planId,
+            workoutPlan,
+            dietPlan,
+          },
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
     } catch (error) {
-      console.log("Error creating the plan");
+      console.error("Error generating fitness plan:", error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: error instanceof Error ? error.message : String(error),
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
-  })
-})
+  }),
+});
 
 export default http;

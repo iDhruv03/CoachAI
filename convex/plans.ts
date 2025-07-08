@@ -15,6 +15,9 @@ export const createPlan = mutation({
               name: v.string(),
               sets: v.number(),
               reps: v.number(),
+               duration: v.optional(v.string()),
+          description: v.optional(v.string()),
+          exercises: v.optional(v.array(v.string())),
             })
           ),
         })

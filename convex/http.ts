@@ -79,6 +79,35 @@ http.route({
   }),
 });
 
+// validate and fix workout plan to ensure it has proper numeric types
+function validateWorkoutPlan(plan: any) {
+  const validatedPlan = {
+    schedule: plan.schedule,
+    exercises: plan.exercises.map((exercise: any) => ({
+      day: exercise.day,
+      routines: exercise.routines.map((routine: any) => ({
+        name: routine.name,
+        sets: typeof routine.sets === "number" ? routine.sets : parseInt(routine.sets) || 1,
+        reps: typeof routine.reps === "number" ? routine.reps : parseInt(routine.reps) || 10,
+      })),
+    })),
+  };
+  return validatedPlan;
+}
+
+// validate diet plan to ensure it strictly follows schema
+function validateDietPlan(plan: any) {
+  // only keep the fields we want
+  const validatedPlan = {
+    dailyCalories: plan.dailyCalories,
+    meals: plan.meals.map((meal: any) => ({
+      name: meal.name,
+      foods: meal.foods,
+    })),
+  };
+  return validatedPlan;
+}
+
 http.route({
   path: "/vapi/generate-program",
   method: "POST",
@@ -151,6 +180,12 @@ http.route({
         }
         
         DO NOT add any fields that are not in this example. Your response must be a valid JSON object with no additional text.`; 
+
+        const workoutResult = await model.generateContent(workoutPrompt);
+        const workoutPlanText = workoutResult.response.text();
+
+        //INPUT validation from AI
+        
 
 
 

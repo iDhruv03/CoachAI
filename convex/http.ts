@@ -126,7 +126,8 @@ http.route({
         fitness_level,
         dietary_restrictions,
       } = payload;
-
+      console.log("received payload", payload);
+      
       const model = genAI.getGenerativeModel({
         model: "gemini-2.0-flash-001",
         generationConfig: {

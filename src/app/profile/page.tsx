@@ -39,8 +39,15 @@ const ProfilePage = () => {
             </div>
             <div className="flex flex-wrap gap-2">
               {allPlans.map(plan => (
-                <Button>
-                  
+                <Button key={plan._id}
+                onClick={()=> setSelectedPlanId(plan._id)}
+                className={`text-foreground border hover:text-white ${
+                    selectedPlanId === plan._id
+                      ? "bg-primary/20 text-primary border-primary"
+                      : "bg-transparent border-border hover:border-primary/50"
+                  }`}
+                >
+
                 </Button>
               ))}
 

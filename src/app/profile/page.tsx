@@ -11,15 +11,21 @@ const ProfilePage = () => {
   const {user} = useUser();
   const userId = user?.id as string;
 
-  const allPlan = useQuery(api.plans.getUserPlans, {userId});
+  const allPlans= useQuery(api.plans.getUserPlans, {userId});
   const {selectedPlanId, setSelectedPlanId} = useState<null | string>(null);
-  const activePlan = allPlan?.find(plan => plan.isActive);
+  const activePlan = allPlans.find(plan => plan.isActive);
 
   const currentPlan = selectedPlanId ? allPlans?.find(plan => plan._id === selectedPlanId) : activePlan;
   return (
     <section className="relative z-10 pt-12 pb-32 flex-grow container mx-auto px-4">
        <ProfileHeader user={user} />
-
+     {allPlans && allPlans?.length > 0 ? (
+      <div>
+        you got the plans
+      </div>
+     ) : (
+      <NoFitnessPlan />
+     )}
     </section>
   )
   

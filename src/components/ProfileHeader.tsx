@@ -1,8 +1,11 @@
 import React from 'react'
-
-const ProfileHeader = () => {
+import {UserResource} from "@clerk/types";
+import CornerElements from './CornerElements';
+const ProfileHeader = ({user} : {user:UserResource}) => {
   return (
-    <div>ProfileHeader</div>
+   <div className="mb-10 relative backdrop-blur-sm border border-border p-6">
+    <CornerElements />
+   </div>
   )
 }
 

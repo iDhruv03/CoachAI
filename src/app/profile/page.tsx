@@ -47,7 +47,12 @@ const ProfilePage = () => {
                       : "bg-transparent border-border hover:border-primary/50"
                   }`}
                 >
-
+                    {plan.name}
+                    {plan.isActive && (
+                      <span className="ml-2 bg-green-500/20 text-green-500 text-xs px-2 py-0.5 rounded">
+                      ACTIVE
+                    </span>
+                    )}
                 </Button>
               ))}
 
